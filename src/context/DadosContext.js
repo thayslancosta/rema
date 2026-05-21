@@ -16,8 +16,12 @@ export function DadosProvider({ children }) {
     setTurmas((lista) => [...lista, { ...turma, id: Date.now() }]);
   }
 
+  function atualizarAluno(id, updates) {
+    setAlunos(lista => lista.map(a => a.id === id ? { ...a, ...updates } : a));
+  }
+
   return (
-    <DadosContext.Provider value={{ alunos, turmas, adicionarAluno, adicionarTurma }}>
+    <DadosContext.Provider value={{ alunos, turmas, adicionarAluno, adicionarTurma, atualizarAluno }}>
       {children}
     </DadosContext.Provider>
   );

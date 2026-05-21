@@ -1,8 +1,11 @@
+const SLUG = {
+  'Rematriculado': 'rematriculado',
+  'Contatado': 'contatado',
+  'Não Contatado': 'nao-contatado',
+  'Não Volta': 'nao-volta',
+};
+
 export default function StatusBadge({ status }) {
-  const slug = status.replace(/\s+/g, '-').toLowerCase();
-  return (
-    <span className={`badge badge--${slug}`}>
-      {status}
-    </span>
-  );
+  const slug = SLUG[status] || 'nao-contatado';
+  return <span className={`badge badge--${slug}`}>{status}</span>;
 }

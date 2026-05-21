@@ -10,9 +10,10 @@ export default function TurmaDetalhe() {
 
   const turma = turmas.find(t => t.id === Number(id));
   if (!turma) return (
-    <div>
+    <div className="cartao" style={{ textAlign: 'center', padding: 56 }}>
       <h1>Turma não encontrada</h1>
-      <Link to="/turmas">Voltar para turmas</Link>
+      <p style={{ color: 'var(--cor-texto-suave)' }}>A turma solicitada não existe ou foi removida.</p>
+      <Link to="/turmas" className="botao botao--primario" style={{ marginTop: 12 }}>Voltar para turmas</Link>
     </div>
   );
 
@@ -27,10 +28,11 @@ export default function TurmaDetalhe() {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="pagina-topo">
         <div>
+          <div className="kicker">— TURMA</div>
           <h1>{turma.nome}</h1>
-          <div style={{ color: 'var(--cor-texto-suave)' }}>{turma.nivel} • {turma.diaHorario} • {turma.unidade}</div>
+          <div className="pagina-topo__sub">{turma.nivel} • {turma.diaHorario} • {turma.unidade}</div>
         </div>
         <div>
           <button className="botao botao--secundario" onClick={() => navegar(-1)}>Voltar</button>
@@ -39,21 +41,26 @@ export default function TurmaDetalhe() {
 
       <div style={{ marginTop: 16 }}>
         <div className="cartao">
-          <div>Total de alunos: {total}</div>
-          <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-            {Object.entries(contagens).map(([k, v]) => (
-              <div key={k} style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                <StatusBadge status={k} />
-                <div style={{ color: 'var(--cor-texto-suave)' }}>{v}</div>
-              </div>
-            ))}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div>
+              <div style={{ fontWeight: 700 }}>Total de alunos</div>
+              <div style={{ color: 'var(--cor-texto-suave)' }}>{total}</div>
+            </div>
+            <div style={{ display: 'flex', gap: 10 }}>
+              {contagens.map(c => (
+                <div key={c.k} style={{ textAlign: 'center' }}>
+                  <StatusBadge status={c.k} />
+                  <div style={{ color: 'var(--cor-texto-suave)' }}>{c.v}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
       <div style={{ marginTop: 12 }}>
         <h2>Alunos da turma</h2>
-        {alunosDaTurma.length === 0 ? <p>Nenhum aluno nesta turma.</p> : (
+        {alunosDaTurma.length === 0 ? <div className="cartao" style={{ padding: 28 }}>Nenhum aluno nesta turma.</div> : (
           <div className="lista-cards" style={{ marginTop: 8 }}>
             {alunosDaTurma.map(a => <AlunoCard key={a.id} aluno={a} nomeTurma={turma.nome} />)}
           </div>

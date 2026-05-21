@@ -27,38 +27,40 @@ export default function AlunoForm() {
   }
 
   return (
-    <div>
+    <div style={{ maxWidth: 720, margin: '0 auto' }}>
       <h1>Novo aluno</h1>
-      <form onSubmit={onSubmit} style={{ marginTop: 12, maxWidth: 720 }}>
-        <div className="campo">
-          <label className="campo__label">Nome</label>
-          <input className={`campo__input ${erros.nome ? 'campo__input--erro' : ''}`} value={form.nome} onChange={e => setForm(f => ({ ...f, nome: e.target.value }))} />
-          {erros.nome && <div className="campo__erro">{erros.nome}</div>}
-        </div>
+      <form onSubmit={onSubmit} style={{ marginTop: 12 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+          <div className="campo">
+            <label className="campo__label">Nome</label>
+            <input className={`campo__input ${erros.nome ? 'campo__input--erro' : ''}`} value={form.nome} onChange={e => setForm(f => ({ ...f, nome: e.target.value }))} />
+            {erros.nome && <div className="campo__erro">{erros.nome}</div>}
+          </div>
 
-        <div className="campo">
-          <label className="campo__label">Turma</label>
-          <select className={`campo__select ${erros.turmaId ? 'campo__input--erro' : ''}`} value={form.turmaId} onChange={e => setForm(f => ({ ...f, turmaId: e.target.value }))}>
-            <option value="">-- selecione --</option>
-            {turmas.map(t => <option key={t.id} value={t.id}>{t.nome} — {t.unidade}</option>)}
-          </select>
-          {erros.turmaId && <div className="campo__erro">{erros.turmaId}</div>}
-        </div>
+          <div className="campo">
+            <label className="campo__label">Turma</label>
+            <select className={`campo__select ${erros.turmaId ? 'campo__input--erro' : ''}`} value={form.turmaId} onChange={e => setForm(f => ({ ...f, turmaId: e.target.value }))}>
+              <option value="">-- selecione --</option>
+              {turmas.map(t => <option key={t.id} value={t.id}>{t.nome} — {t.unidade}</option>)}
+            </select>
+            {erros.turmaId && <div className="campo__erro">{erros.turmaId}</div>}
+          </div>
 
-        <div className="campo">
-          <label className="campo__label">Unidade</label>
-          <input className={`campo__input ${erros.unidade ? 'campo__input--erro' : ''}`} value={form.unidade} onChange={e => setForm(f => ({ ...f, unidade: e.target.value }))} />
-          {erros.unidade && <div className="campo__erro">{erros.unidade}</div>}
-        </div>
+          <div className="campo">
+            <label className="campo__label">Unidade</label>
+            <input className={`campo__input ${erros.unidade ? 'campo__input--erro' : ''}`} value={form.unidade} onChange={e => setForm(f => ({ ...f, unidade: e.target.value }))} />
+            {erros.unidade && <div className="campo__erro">{erros.unidade}</div>}
+          </div>
 
-        <div className="campo">
-          <label className="campo__label">Status</label>
-          <select className="campo__select" value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
-            <option>Não Contatado</option>
-            <option>Contatado</option>
-            <option>Rematriculado</option>
-            <option>Não Volta</option>
-          </select>
+          <div className="campo">
+            <label className="campo__label">Status</label>
+            <select className="campo__select" value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
+              <option>Não Contatado</option>
+              <option>Contatado</option>
+              <option>Rematriculado</option>
+              <option>Não Volta</option>
+            </select>
+          </div>
         </div>
 
         <div className="campo">
@@ -71,7 +73,7 @@ export default function AlunoForm() {
           <textarea className="campo__textarea" value={form.observacoes} onChange={e => setForm(f => ({ ...f, observacoes: e.target.value }))} />
         </div>
 
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <input type="checkbox" checked={form.contratoAnual} onChange={e => setForm(f => ({ ...f, contratoAnual: e.target.checked }))} /> Contrato anual
           </label>

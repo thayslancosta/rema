@@ -19,7 +19,7 @@ export default function Login() {
     return erros;
   }
 
-  async function onSubmit(e) {
+  function onSubmit(e) {
     e.preventDefault();
     setTentou(true);
     setErro('');
@@ -34,40 +34,58 @@ export default function Login() {
       } else {
         setErro(res.erro || 'Erro ao logar');
       }
-    }, 500);
+    }, 600);
   }
 
   const erros = tentou ? validar() : {};
 
   return (
-    <div style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <div className="cartao" style={{ width: 420 }}>
-        <h1>ReMatrícula</h1>
-        <p style={{ color: 'var(--cor-texto-suave)', marginTop: 6 }}>Sistema de rematrícula</p>
+    <div className="login">
+      <aside className="login__aside">
+        <div className="login__aside-conteudo">
+          <div className="kicker">— VISÃO GERAL</div>
+          <h1 style={{ marginTop: 12 }}>ReMatrícula <em>sistema</em></h1>
+          <p style={{ marginTop: 12, color: 'var(--cor-texto-suave)' }}>Painel de acompanhamento de rematrículas — visualize turmas, alunos e status.</p>
+        </div>
+        <div className="login__textura" aria-hidden="true" />
+      </aside>
 
-        <form onSubmit={onSubmit} style={{ marginTop: 16 }}>
-          <div className="campo">
-            <label className="campo__label">E-mail</label>
-            <input className={`campo__input ${erros.email ? 'campo__input--erro' : ''}`} value={email} onChange={e => setEmail(e.target.value)} />
-            {erros.email && <div className="campo__erro">{erros.email}</div>}
-          </div>
+      <main className="login__main">
+        <div className="login__form cartao surgir surgir-1">
+          <h2 style={{ marginBottom: 6 }}>Entrar</h2>
+          <p style={{ color: 'var(--cor-texto-suave)', marginBottom: 12 }}>Acesso de teste: professor@yazigi.com / 123456</p>
 
-          <div className="campo">
-            <label className="campo__label">Senha</label>
-            <input type="password" className={`campo__input ${erros.senha ? 'campo__input--erro' : ''}`} value={senha} onChange={e => setSenha(e.target.value)} />
-            {erros.senha && <div className="campo__erro">{erros.senha}</div>}
-          </div>
+          <form onSubmit={onSubmit}>
+            <div className="campo">
+              <label className="campo__label">E-mail</label>
+              <input className={`campo__input ${erros.email ? 'campo__input--erro' : ''}`} value={email} onChange={e => setEmail(e.target.value)} />
+              {erros.email && <div className="campo__erro">{erros.email}</div>}
+            </div>
 
-          {erro && <div className="campo__erro">{erro}</div>}
+            <div className="campo">
+              <label className="campo__label">Senha</label>
+              <input type="password" className={`campo__input ${erros.senha ? 'campo__input--erro' : ''}`} value={senha} onChange={e => setSenha(e.target.value)} />
+              {erros.senha && <div className="campo__erro">{erros.senha}</div>}
+            </div>
 
-          <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-            <button className="botao botao--primario" type="submit" disabled={carregando}>{carregando ? 'Entrando...' : 'Entrar'}</button>
-            <button type="button" className="botao botao--secundario" onClick={() => { setEmail('professor@yazigi.com'); setSenha('123456'); }}>Usar credencial de teste</button>
-          </div>
-        </form>
+            {erro && <div className="campo__erro">{erro}</div>}
 
-        <p style={{ marginTop: 12, color: 'var(--cor-texto-suave)', fontSize: '0.9rem' }}>Acesso de teste: professor@yazigi.com / 123456</p>
-      </div>
+            <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
+              <button className="botao botao--primario" type="submit" disabled={carregando}>{carregando ? 'Entrando...' : 'Entrar'}</button>
+              <button type="button" className="botao botao--secundario" onClick={() => { setEmail('professor@yazigi.com'); setSenha('123456'); }}>Usar credencial de teste</button>
+            </div>
+          </form>
+        </div>
+      </main>
+
+      <style>{`
+        .login { min-height: 100vh; display: grid; grid-template-columns: 1.05fr 1fr; }
+        .login__aside { padding: 48px 36px; background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); display:flex; flex-direction:column; justify-content:space-between; }
+        .login__aside-conteudo { max-width: 520px; }
+        .login__main { display:flex; align-items:center; justify-content:center; padding: 48px 32px; }
+        .login__form { width: 100%; max-width: 420px; }
+        @media (max-width: 900px) { .login { grid-template-columns: 1fr; } .login__aside { display:none; } }
+      `}</style>
     </div>
   );
 }

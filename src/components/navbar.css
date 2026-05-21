@@ -9,8 +9,9 @@
 }
 .navbar__marca { font-weight: 600; color: var(--cor-titulo); }
 .navbar__links { display: flex; gap: 12px; align-items: center; }
-.navbar__link { color: var(--cor-texto-suave); padding: 6px 8px; border-radius: 8px; }
-.navbar__link.active { color: var(--cor-marca); }
+.navbar__link { color: var(--cor-texto-suave); padding: 6px 8px; border-radius: 8px; transition: var(--transicao); }
+.navbar__link:hover { color: var(--cor-titulo); background: var(--cor-superficie-2); }
+.navbar__link.active { color: var(--cor-marca); font-weight: 600; background: var(--cor-marca-suave); box-shadow: 0 1px 0 rgba(0,0,0,0.04) inset; }
 .navbar__acoes { display: flex; gap: 8px; align-items: center; }
 
 /* Mobile-first adjustments */

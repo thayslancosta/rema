@@ -16,9 +16,9 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar__marca">ReMatrícula</div>
       <div className="navbar__links">
-        <NavLink to="/" end className="navbar__link">Dashboard</NavLink>
-        <NavLink to="/alunos" className="navbar__link">Alunos</NavLink>
-        <NavLink to="/turmas" className="navbar__link">Turmas</NavLink>
+        <NavLink to="/" end className={({ isActive }) => `navbar__link${isActive ? ' active' : ''}`}>Dashboard</NavLink>
+        <NavLink to="/alunos" className={({ isActive }) => `navbar__link${isActive ? ' active' : ''}`}>Alunos</NavLink>
+        <NavLink to="/turmas" className={({ isActive }) => `navbar__link${isActive ? ' active' : ''}`}>Turmas</NavLink>
       </div>
       <div className="navbar__acoes">
         <ThemeToggle />

@@ -50,6 +50,7 @@ A aplicação abre em http://localhost:3000
   será implementada na Fase 2 com integração ao backend REST.
 - O tema inicia no modo escuro e pode ser alternado pelo botão na barra de navegação.
  - Após concluir cada fase: faça um commit Git com uma mensagem clara descrevendo a mudança (por exemplo: "feat: ReMatrícula - Fase 1").
+ - Após concluir cada fase: faça um commit Git com uma mensagem clara descrevendo a mudança (por exemplo: "feat: ReMatrícula - Fase 1"). Commit e push frequentes ajudam a manter ponto de restauração e histórico claro.
 
 ## Evoluções futuras (Fase 2)
 - Integração com API REST (substituir os dados mockados).

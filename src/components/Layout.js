@@ -5,7 +5,8 @@ export default function Layout() {
   return (
     <>
       <Navbar />
-      <main className="container">
+      <a className="skip-link" href="#main">Pular para o conteúdo</a>
+      <main id="main" className="container">
         <Outlet />
       </main>
     </>

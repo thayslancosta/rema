@@ -138,3 +138,21 @@ input, textarea, select, button { font-family: inherit; font-size: 0.95rem; }
 .badge--não-contatado, .badge--nao-contatado { background: rgba(234,179,8,0.12); color: var(--status-nao-contatado); border: 1px solid rgba(234,179,8,0.22); }
 .badge--não-volta, .badge--nao-volta { background: rgba(239,68,68,0.12); color: var(--status-nao-volta); border: 1px solid rgba(239,68,68,0.22); }
 
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+}
+.skip-link:focus {
+  position: relative; left: 0; top: 8px; width: auto; height: auto; padding: 8px 12px; background: var(--cor-marca-forte); color: white; border-radius: 6px; z-index: 9999;
+}
+
+/* Stat card styling */
+.stat-card__titulo { color: var(--cor-texto-suave); font-size: 0.95rem; }
+.stat-card__valor { font-size: 1.4rem; font-weight: 700; }
+
+/* Responsividade adicional */
+@media (max-width: 640px) {
+  .container { padding: 16px 14px; }
+  .cartao { padding: 14px; }
+}
+

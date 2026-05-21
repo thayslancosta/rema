@@ -45,6 +45,32 @@ npm start
 ```
 A aplicação abre em http://localhost:3000
 
+## Desenvolvimento rápido
+- Rodar em modo dev (Create React App):
+```bash
+npm install
+npm start
+# abre em http://localhost:3000 (ou porta alternativa configurada)
+```
+- Gerar build de produção:
+```bash
+NODE_OPTIONS=--max_old_space_size=4096 npm run build
+```
+- Servir o build localmente para QA:
+```bash
+npx serve -s build -l 5001
+# abre em http://localhost:5001
+```
+
+## Notas importantes (redesign v2)
+- Identidade: fonte de corpo `Manrope`, títulos em `Fraunces`.
+- Cor de marca: violeta (claro: `#6D5BD0`, escuro: `#9b8cf0`).
+- Tema começa em `dark` e pode ser alternado pelo toggle na barra.
+- Dados são mockados em memória (sem backend). Use o modal de edição de aluno para atualizar status/observações — a função `atualizarAluno` está disponível em `src/context/DadosContext.js`.
+
+## Commit e histórico
+- Faça commits pequenos e frequentes com mensagens descritivas, por exemplo: `feat: redesign — Fase 3 componentes` ou `chore: build production`.
+
 ## Observações
 - Dados mockados em memória: cadastros somem ao recarregar a página (F5). A persistência
   será implementada na Fase 2 com integração ao backend REST.
